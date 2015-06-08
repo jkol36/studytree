@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="appModule">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>StudyTree</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="myStyle.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script src="appModule.js"></script>
+    <script src="thirdPartyModule.js"></script>
+    <script src="authenticationModule.js"></script>
+    <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+  </head>
+  
+  <head>
+    <title>StudyTree | Branch Out!</title>
+	<!-- Meta -->
+	<meta charset="utf-8" />
+	<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	<link href="favIcon.png" rel="shortcut icon" />
+	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+	<link href="http://fonts.googleapis.com/css?family=Covered+By+Your+Grace" rel="stylesheet" type="text/css" /><!-- Global CSS -->
+	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" /><!-- Plugins CSS -->
+	<link href="assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link href="assets/plugins/flexslider/flexslider.css" rel="stylesheet" />
+	<link href="assets/plugins/animate-css/animate.min.css" rel="stylesheet" /><!-- Theme CSS -->
+	<link href="assets/css/styles.css" id="theme-style" rel="stylesheet" /><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries --><!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+  
+  
+  
+  
+  
+  <body id="container">
+    <div>
+      <div class="page-header">
+<!-- ******HEADER****** -->
+<header class="header navbar-fixed-top" id="top"><script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'share.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}})()</script>
+<div class="container">
+<h1 class="logo pull-left"><a class="scrollto" href="index.html#promo"><img alt="Logo" class="logo-image" id="logo-image" src="assets/images/logo/logo.png" /> <span class="logo-title">StudyTree</span> </a></h1>
+<!--//logo-->
+
+<nav class="main-nav navbar-right" id="main-nav" role="navigation">
+<div class="navbar-header"><button class="navbar-toggle" data-target="#navbar-collapse" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span></button><!--//nav-toggle--></div>
+<!--//navbar-header-->
+
+<div class="navbar-collapse collapse" id="navbar-collapse">
+<ul class="nav navbar-nav">
+    <li class="active nav-item sr-only"><a  href="index.html#promo">Home</a></li>
+    <li class="nav-item"><a  href="index.html#features">Features</a></li>
+	<li class="nav-item"><a  href="index.html#how">How it works</a></li>
+	<li class="nav-item"><a  href="index.html#story">Story</a></li>
+	<!--  <li class="nav-item"><a class="scrollto" href="#testimonials">Testimonials</a></li> -->
+    
+
+
+	<li class="nav-item"><a  href="index.html#faq">FAQ</a></li>
+	<!--       <li class="nav-item"><a class="scrollto" href="#pricing">Pricing</a></li>-->
+	<li class="nav-item last"><a  href="index.html#contact">Contact</a></li>
+    <li class="nav-item"><a href="transcript.html">Transcript</a></li>
+    <li class="nav-item"><a href="sponserpayment.html#/parents/payment">Sponsor</a></li>
+    <li class="nav-item"><a href="http://blog.studytreeapp.com">Blog</a></li>
+
+</ul>
+<!--//nav--></div>
+<!--//navabr-collapse--></nav>
+<!--//main-nav--></div>
+</header>       
+      </div>
+      <div ng-view>
+      </div>
+    </div>
+  </body>
+</html>

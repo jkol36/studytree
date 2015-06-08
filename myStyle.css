@@ -1,0 +1,85 @@
+html, body {
+	height: 100% !important;
+}
+
+.page-header{
+	text-align: center;
+}
+
+#container{
+	background-color: #1abc9c;
+}
+
+#about{
+	padding: 30px;
+	margin-bottom: 30px;
+	font-size: 21px;
+	font-weight: 200;
+	line-height: 2.1428571435;
+	color: inherit;
+}
+
+#about h1{
+	line-height: 1;
+}
+
+#about p{
+	line-height: 1.4;
+}
+
+h1, p{
+	color : #EFEBD6;
+	font-family: "Helvetica", Arial, sans-serif;
+}
+
+#newForm {
+	text-align: center;
+	padding: 32px 16px 32px 16px;
+}
+
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {
+	text-decoration:none;
+	font-size: 16px;
+}
+
+.centered-form{
+	margin-top: 60px;
+}
+
+.centered-form .panel{
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+#timersViewerContainer{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 24px;
+}
+a:active {text-decoration:none;}
+
+input.ng-invalid.ng-dirty {
+  border: 1px solid red;
+}
+input.ng-valid.ng-dirty{
+  border: 1px solid green;
+}
+small.error{
+	color: red;
+}
+div.error{
+	margin-bottom: 12px;
+}
+span {
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+button {
+	margin: 12px 12px 12px 12px;
+}
+
+.full_height {
+	height: 100% !important;
+}

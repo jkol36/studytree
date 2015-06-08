@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en"><!--<![endif]-->
+<head>
+    <title>StudyTree | Branch Out!</title>
+	<!-- Meta -->
+	<meta charset="utf-8" />
+	<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	<link href="favIcon.png" rel="shortcut icon" />
+	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+	<link href="http://fonts.googleapis.com/css?family=Covered+By+Your+Grace" rel="stylesheet" type="text/css" /><!-- Global CSS -->
+	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" /><!-- Plugins CSS -->
+	<link href="assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link href="assets/plugins/flexslider/flexslider.css" rel="stylesheet" />
+	<link href="assets/plugins/animate-css/animate.min.css" rel="stylesheet" /><!-- Theme CSS -->
+	<link href="assets/css/styles.css" id="theme-style" rel="stylesheet" /><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries --><!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="jquery-2.1.0.min.js"></script>
+    <script>
+      $(document).on('click', '#close-preview', function(){ 
+          $('.image-preview').popover('hide');
+          // Hover befor close the preview
+          $('.image-preview').hover(
+              function () {
+                 $('.image-preview').popover('show');
+              }, 
+               function () {
+                 $('.image-preview').popover('hide');
+              }
+          );    
+      });
+
+      $(function() {
+          var submitFile
+          // Create the close button
+          var closebtn = $('<button/>', {
+              type:"button",
+              text: 'x',
+              id: 'close-preview',
+              style: 'font-size: initial;',
+          });
+          closebtn.attr("class","close pull-right");
+          // Set the popover default content
+          $('.image-preview').popover({
+              trigger:'manual',
+              html:true,
+              title: "<strong>Preview</strong>"+$(closebtn)[0].outerHTML,
+              content: "There's no image",
+              placement:'bottom'
+          });
+          // Clear event
+          $('.image-submit').click(function(){
+              var data = new FormData();
+              data.append('image1', submitFile)
+              jQuery.ajax({
+                  url: 'http://studytree2.azurewebsites.net/api/transcript/upload',
+                  data: data,
+                  cache: false,
+                  contentType: false,
+                  processData: false,
+                  type: 'POST',
+                  success: function(data){
+                      $("#success").fadeIn(1000).fadeOut(1000);
+                  }
+              });
+          }); 
+          // Create the preview image
+          $(".image-preview-input input:file").change(function (){       
+              submitFile = this.files[0];
+              var reader = new FileReader();
+              // Set preview image into the popover data-content
+              reader.onload = function (e) {
+                  $(".image-preview-input-title").text("Change");
+                  $(".image-submit").show();
+                  $(".image-preview-filename").val(submitFile.name);            
+              }        
+              reader.readAsDataURL(submitFile);
+          });  
+      });
+    </script>
+    <style>
+    .panel-heading {
+      margin-top: 64px;
+    }
+
+    .container{
+        margin-top:20px;
+    }
+    .image-preview-input {
+        position: relative;
+      overflow: hidden;
+      margin: 0px;    
+        color: #333;
+        background-color: #fff;
+        border-color: #ccc;    
+    }
+    .image-preview-input input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0;
+      padding: 0;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      filter: alpha(opacity=0);
+    }
+    .image-preview-input-title {
+        margin-left:2px;
+    }
+    .alert-success {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 12px;
+      width: 180px;
+      height: auto;
+      text-align: center;
+    }
+/*.btn {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}*/
+</style>
+</head>
+<body data-spy="scroll"><!-- ******HEADER****** -->
+<header class="header navbar-fixed-top" id="top">
+<script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'share.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}})()</script>
+
+<div class="container">
+<h1 class="logo pull-left"><a href="index.html#promo"><img alt="Logo" class="logo-image" id="logo-image" src="assets/images/logo/logo.png" /> <span class="logo-title">StudyTree</span> </a></h1>
+<!--//logo-->
+
+<nav class="main-nav navbar-right" id="main-nav" role="navigation">
+<div class="navbar-header"><button class="navbar-toggle" data-target="#navbar-collapse" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span></button><!--//nav-toggle--></div>
+<!--//navbar-header-->
+
+<div class="navbar-collapse collapse" id="navbar-collapse">
+<ul class="nav navbar-nav">
+    <li class="active nav-item sr-only"><a  href="index.html#promo">Home</a></li>
+	<li class="nav-item"><a  href="index.html#features">Features</a></li>
+	<li class="nav-item"><a  href="index.html#how">How it works</a></li>
+	<li class="nav-item"><a  href="index.html#story">Story</a></li>
+	<!--  <li class="nav-item"><a class="scrollto" href="#testimonials">Testimonials</a></li> -->
+    
+
+
+	<li class="nav-item"><a  href="index.html#faq">FAQ</a></li>
+	<!--       <li class="nav-item"><a class="scrollto" href="#pricing">Pricing</a></li>-->
+	<li class="nav-item last"><a  href="index.html#contact">Contact</a></li>
+    <li class="nav-item"><a href="transcript.html">Transcript</a></li>
+    <li class="nav-item"><a href="sponserpayment.html#/parents/payment">Sponsor</a></li>
+    <li class="nav-item"><a href="http://blog.studytreeapp.com">Blog</a></li>
+
+</ul>
+<!--//nav--></div>
+<!--//navabr-collapse-->
+<!--//main-nav--></div>
+</nav>
+</header>
+<!--//header--><!-- ******PROMO****** -->
+
+<section class="promo section offset-header has-pattern" style="height:100vh;" id="promo">
+<div class="container">
+<div class="row">
+<div class="overview col-md-8 col-md-offset-2">
+<p  style="font-size:2em;">1. Upload your transcript here  </p>
+<p  style="font-size:2em;">2. StudyTree will review your transcript </p>
+<p  style="font-size:2em;">3. Receive a star on your profile next to classes you got an A-, A or A+ in </p>
+</div>
+<!-- <form name="form1" method="post" enctype="multipart/form-data" action="http://studytree2.azurewebsites.net/api/transcript/upload">
+  
+    <div>
+        <label for="image1">Upload your transcript and we will give you points!</label>
+        <input name="image1" value="submit" type="file" />
+    </div>
+    <p></p>
+    <div>
+    
+        <input class="btn" type="submit" value="Submit" />
+    </div>
+</form> -->
+
+<div class="overview col-md-8 col-md-offset-2">  
+      <!-- image-preview-filename input [CUT FROM HERE]-->
+      <h2><span class="label label-primary title">Submit Transcript</span></h2>
+      <div class="input-group image-preview">
+          <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+          <span class="input-group-btn">
+              <button type="button" class="btn btn-default image-submit" style="display:none;">
+                  <span class="glyphicon glyphicon-ok"></span> Submit
+              </button>
+              <!-- image-preview-input -->
+              <div class="btn btn-default image-preview-input">
+                  <span class="glyphicon glyphicon-folder-open"></span>
+                  <span class="image-preview-input-title">Browse</span>
+                  <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+              </div>
+          </span>
+      </div><!-- /input-group image-preview [TO HERE]--> 
+      <div class="col-md-4 col-md-offset-4" id="success" style="display:none;">
+        <div class="alert alert-success" role="alert">Submit Successful</div>
+      </div>
+</div>
+<!--//overview--><!--// iPhone starts -->
+
+
+
+<div class="phone android col-md-4 col-sm-12 col-xs-12" style="display:none">
+<div class="android-holder phone-holder">
+<div class="android-holder-inner">
+<div class="slider flexslider">
+<ul class="slides">
+	<li><img alt="" src="assets/images/android/android-slide-1.png" /></li>
+	<li><img alt="" src="assets/images/android/android-slide-2.png" /></li>
+	<li><img alt="" src="assets/images/android/android-slide-3.png" /></li>
+</ul>
+<!--//slides--></div>
+<!--//flexslider--></div>
+<!--//phone-holder-inner--></div>
+<!--//iphone-holder--></div>
+<!--//iphone--><!--// Android ends --><!--// iPad starts -->
+
+<div class="ipad ipad-black col-md-4 col-sm-12 col-xs-12 col-md-pull-1" style="display:none">
+<div class="ipad-holder">
+<div class="ipad-holder-inner">
+<div class="slider flexslider">
+<ul class="slides">
+	<li><img alt="" src="assets/images/ipad/ipad-slide-1.png" /></li>
+	<li><img alt="" src="assets/images/ipad/ipad-slide-2.png" /></li>
+	<li><img alt="" src="assets/images/ipad/ipad-slide-3.png" /></li>
+</ul>
+<!--//slides--></div>
+<!--//flexslider--></div>
+<!--//ipad-holder-inner--></div>
+<!--//ipad-holder--></div>
+<!--//ipad--><!--// iPad ends --></div>
+<!--//row--></div>
+<!--//container--></section>
+<!--//promo--><!-- ******FEATURES****** -->
+
+
+
+<footer class="footer">
+<div class="container"><small class="copyright pull-left">Copyright &copy; 2014 Study Tree LLC</small>
+
+<ul class="links list-inline">
+	<li><a href="index.html#">Terms</a></li>
+	<li><a href="index.html#">Privacy</a></li>
+</ul>
+</div>
+</footer>
+<!--//footer--><!-- *****CONFIGURE STYLE****** --><!--   <div class="config-wrapper">
+        <div class="config-wrapper-inner">
+            <a id="config-trigger" class="config-trigger" href="#"><i class="fa fa-cog"></i></a>
+            <div id="config-panel" class="config-panel">
+                <h5>Choose Colour</h5>
+                <ul id="color-options" class="list-unstyled list-inline">
+                    <li class="theme-1 active" ><a data-style="assets/css/styles.css" data-logo="assets/images/logo/logo.png" href="#"></a></li>
+                    <li class="theme-2"><a data-style="assets/css/styles-2.css" data-logo="assets/images/logo/logo-2.png" href="#"></a></li>
+                    <li class="theme-3"><a data-style="assets/css/styles-3.css" data-logo="assets/images/logo/logo-3.png" href="#"></a></li>
+                    <li class="theme-4"><a data-style="assets/css/styles-4.css" data-logo="assets/images/logo/logo-4.png" href="#"></a></li>
+                    
+                    <li class="theme-5"><a data-style="assets/css/styles-5.css" data-logo="assets/images/logo/logo-5.png" href="#"></a></li> 
+                    
+                    <li class="theme-6"><a data-style="assets/css/styles-6.css" data-logo="assets/images/logo/logo-6.png" href="#"></a></li>
+                    <li class="theme-7"><a data-style="assets/css/styles-7.css" data-logo="assets/images/logo/logo-7.png" href="#"></a></li>
+                    <li class="theme-8"><a data-style="assets/css/styles-8.css" data-logo="assets/images/logo/logo-8.png" href="#"></a></li>
+                    
+                    <li class="theme-9"><a data-style="assets/css/styles-9.css" data-logo="assets/images/logo/logo-9.png" href="#"></a></li>
+                    <li class="theme-10"><a data-style="assets/css/styles-10.css" data-logo="assets/images/logo/logo-10.png" href="#"></a></li>
+                    
+                </ul>
+                <h5 class="device-title">Choose Device</h5>
+                <ul id="device-options" class="list-unstyled">
+                    <li class="default active"><a data-class="iphone-white" data-type="iphone" href="#">iPhone White</a></li>
+                    <li><a data-class="iphone-white" data-type="iphone" href="#">iPhone White</a></li>
+                    <li><a data-class="ipad-white" data-type="ipad" href="#">iPad White</a></li>
+                    <li><a data-class="ipad-black" data-type="ipad" href="#">iPad Black</a></li>
+                    <li><a data-class="android" data-type="android" href="#">Android</a></li>
+                </ul>
+                <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
+              --><!--//configure-panel--><!--//config-wrapper-inner--><!--//config-wrapper--><!-- Javascript --><script type="text/javascript" src="assets/plugins/jquery-1.11.1.min.js"></script><script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script><script type="text/javascript" src="assets/plugins/detectmobilebrowser.js"></script><script type="text/javascript" src="assets/plugins/jquery.easing.1.3.js"></script><script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script><script type="text/javascript" src="assets/plugins/jquery-inview/jquery.inview.min.js"></script><script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script><script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script><script type="text/javascript" src="assets/plugins/jquery-placeholder/jquery.placeholder.js"></script><script type="text/javascript" src="assets/plugins/flexslider/jquery.flexslider-min.js"></script><script type="text/javascript" src="assets/js/main.js"></script><!--[if !IE]>--><script type="text/javascript" src="assets/js/animations.js"></script><!--<![endif]--></body>
+
+    
+    
+</html>
